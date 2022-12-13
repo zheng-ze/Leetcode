@@ -7,27 +7,15 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        def findPath(root, arr, val):
-            if not root:
-                return False
-            
-            arr.append(root)
-            
-            if root == val:
-                return True
-            
-            elif findPath(root.left, arr, val) or findPath(root.right, arr, val):
-                return True
-            
-            arr.pop()
-            return False
-                
-        #find path from root to p
-        path_p = []
-        findPath(root, path_p, p)
-        #find path from root to q
-        path_q = []
-        findPath(root, path_q, q)
+        minimum = min(p.val, q.val)
+        maximum = max(p.val, q.val)
         
-        #find common node in paths and return lowest
-        return [element for element in path_p if element in path_q][-1]
+        while root:
+            if root.val < minimum:
+                root = root.right
+            elif root.val > maximum:
+                root = root.left
+            else:
+                break
+        
+        return root
