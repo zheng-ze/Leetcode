@@ -2,12 +2,11 @@ class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         direc = ((1, 0), (-1, 0), (0, 1), (0, -1))
         orig = image[sr][sc]
-        queue = []
-        queue.append((sr, sc))
+        queue = deque([(sr, sc)])
         visited = [[False for j in range(len(image[0]))] for i in range(len(image))]
         
         while queue:
-            x, y = queue.pop(0)
+            x, y = queue.popleft()
             if visited[x][y]:
                 continue
             image[x][y] = color
