@@ -18,4 +18,4 @@ class Solution:
             else:
                 break
         
-        return root 
+        return root
