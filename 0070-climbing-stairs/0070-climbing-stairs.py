@@ -10,6 +10,6 @@ class Solution:
                 left = climb(n-1)
                 right = climb(n-2)
                 mem[str(n)] = left + right
-                return left + right
+                return mem[str(n)]
         
         return climb(n)
