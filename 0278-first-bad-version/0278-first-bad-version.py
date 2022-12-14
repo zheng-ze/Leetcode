@@ -13,7 +13,5 @@ class Solution:
                 upper = mid
             else:
                 lower = mid + 1
-            print(mid, lower, upper)
-
         
         return lower
