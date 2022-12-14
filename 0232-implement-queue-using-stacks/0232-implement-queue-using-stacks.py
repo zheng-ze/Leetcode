@@ -19,7 +19,7 @@ class MyQueue:
         return self.s2[-1]
 
     def empty(self) -> bool:
-        return len(self.s1) == 0 and len(self.s2) == 0
+        return not self.s1 and not self.s2
         
 
 
