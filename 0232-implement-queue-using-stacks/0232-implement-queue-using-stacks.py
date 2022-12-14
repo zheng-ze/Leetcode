@@ -8,18 +8,18 @@ class MyQueue:
         self.s1.append(x)
 
     def pop(self) -> int:
-        while self.s1:
-            self.s2.append(self.s1.pop())
-        result = self.s2.pop()
-        while self.s2:
-            self.s1.append(self.s2.pop())
+        result = self.peek()
+        self.s2.pop()
         return result
 
     def peek(self) -> int:
-        return self.s1[0]
+        if len(self.s2) == 0:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+        return self.s2[-1]
 
     def empty(self) -> bool:
-        return len(self.s1) == 0
+        return len(self.s1) == 0 and len(self.s2) == 0
         
 
 
