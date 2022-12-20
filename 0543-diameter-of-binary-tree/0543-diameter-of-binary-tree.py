@@ -15,4 +15,4 @@ class Solution:
             return 1 + max(left, right)
         
         depth(root)
-        return self.maxLength #Returns the sum of the max depth of left and right subtree
+        return self.maxLength #Returns the sum of the max depth of left and right subtree 
