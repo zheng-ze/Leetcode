@@ -1,15 +1,18 @@
+symbol = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 class Solution:
     def romanToInt(self, s: str) -> int:
-        prev = ""
+        prev = 0
+        curr = 1
         total = 0
-        symbol = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-        for c in s:
-            total += symbol[c]
-            if prev == "I" and (c == "V" or c == "X"):
-                total -= 2
-            if prev == "X" and (c == "L" or c == "C"):
-                total -= 20
-            if prev == "C" and (c == "D" or c == "M"):
-                total -= 200
-            prev = c
+        while curr < len(s):
+            if symbol[s[prev]] < symbol[s[curr]]:
+                total += symbol[s[curr]] - symbol[s[prev]]
+                prev = curr + 1
+                curr += 2
+            else:
+                total += symbol[s[prev]]
+                prev = curr
+                curr += 1
+        if curr == len(s):
+            total += symbol[s[curr - 1]]
         return total
