@@ -12,5 +12,4 @@ class Solution:
             if prev == "C" and (c == "D" or c == "M"):
                 total -= 200
             prev = c
-            print(total)
         return total
