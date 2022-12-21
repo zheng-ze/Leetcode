@@ -15,4 +15,4 @@ class Solution:
                 curr += 1
         if curr == len(s):
             total += symbol[s[curr - 1]]
-        return total
+        return total 
