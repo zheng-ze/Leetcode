@@ -1,6 +1,9 @@
 class Solution:
     def detectCapitalUse(self, word: str) -> bool:
-        if word.isupper() or word.islower():
+        count = 0
+        for c in word:
+            if c.isupper():
+                count += 1
+        if count == 1 and word[0].isupper():
             return True
-        else:
-            return word[0].isupper() and word[1:].islower()
+        return count == 0 or count == len(word)
