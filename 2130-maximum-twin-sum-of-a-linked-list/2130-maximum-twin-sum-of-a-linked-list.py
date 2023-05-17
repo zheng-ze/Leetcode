@@ -21,7 +21,8 @@ class Solution:
         while head != slowPointer:
             nextNode = head.next
             head.next = prev
-
+            
+            # Prep for next iteration
             prev = head
             head = nextNode
                 
