@@ -3,7 +3,10 @@ class Solution:
         #find the pivot
         lo, hi = 0, len(nums) - 1
 
-        while lo <= hi:            
+        while lo <= hi:   
+            # Remove duplicates so that we can reduce search space
+            # and get a more accurate mid -> unable to find pivot otherwise
+            # as mid can be a duplicate -> unable to tell which direction to search
             while lo < hi and nums[lo] == nums[lo + 1]:
                 lo += 1
             while hi > lo and nums[hi] == nums[hi - 1]:
