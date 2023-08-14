@@ -1,10 +1,11 @@
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
-        rows = len(obstacleGrid)
-        cols = len(obstacleGrid[0])
-        paths = [[0 for c in range(cols)] for r in range(rows)]
-        if obstacleGrid[0][0] == 1:
+        if not obstacleGrid or not obstacleGrid[0] or obstacleGrid[0][0] == 1:
             return 0
+        
+        rows, cols = len(obstacleGrid), len(obstacleGrid[0])
+        paths = [[0 for c in range(cols)] for r in range(rows)]
+        
         paths[0][0] = 1
         
         for r in range(rows):
