@@ -4,16 +4,15 @@ class Solution:
             return 0
         
         rows, cols = len(obstacleGrid), len(obstacleGrid[0])
-        paths = [[0 for c in range(cols)] for r in range(rows)]
+        prevRow = [0] * cols
+        currRow = [0] * cols
         
-        paths[0][0] = 1
+        prevRow[0] = 1
         
         for r in range(rows):
-            for c in range(cols):
-                if r + 1 < rows and obstacleGrid[r + 1][c] == 0:
-                    paths[r + 1][c] += paths[r][c]
-                
-                if c + 1 < cols and obstacleGrid[r][c + 1] == 0:
-                    paths[r][c + 1] += paths[r][c]
+            currRow[0] = 0 if obstacleGrid[r][0] == 1 else prevRow[0]
+            for c in range(1, cols):
+                currRow[c] = 0 if obstacleGrid[r][c] == 1 else prevRow[c] + currRow[c - 1]
+            prevRow[:] = currRow
         
-        return paths[rows - 1][cols - 1]
+        return currRow[cols - 1]
