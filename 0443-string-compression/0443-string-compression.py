@@ -4,31 +4,22 @@ class Solution:
         if len(chars) == 1:
             return 1
         
-        c = chars[0]
-        count = 1
-        modify_pointer = 0
+        read, write = 0, 0
         
-        for i in range(1, length):
-            if chars[i] == c:
+        while read < length:
+            chars[write] = chars[read]
+            count = 1
+            write += 1
+            
+            while read + 1 < length and chars[read] == chars[read + 1]:
+                read += 1
                 count += 1
             
-            if chars[i] != c:
-                chars[modify_pointer] = c
-                modify_pointer += 1
-                if count > 1:
-                    str_count = str(count)
-                    chars[modify_pointer : modify_pointer + len(str_count)] = \
-                        [x for x in str_count]
-                    modify_pointer += len(str_count)
-                c = chars[i]
-                count = 1
-        chars[modify_pointer] = c
-        modify_pointer += 1
-
-        if count > 1:
-            str_count = str(count)
-            chars[modify_pointer : modify_pointer + len(str_count)] = \
-                [x for x in str_count]
-            modify_pointer += len(str_count)
+            if count > 1:
+                for char in str(count):
+                    chars[write] = char
+                    write += 1
+            
+            read += 1
         
-        return modify_pointer
+        return write
