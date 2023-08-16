@@ -20,6 +20,7 @@ class Solution:
             
             window.append(i)
             
+            # Front of queue will always be max after the book keeping done above
             if (i >= k - 1):
                 out[i - k + 1] = nums[window[0]]
                 
