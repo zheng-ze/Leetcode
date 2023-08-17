@@ -8,12 +8,15 @@ class Solution:
         
         q = deque([])
         
+        # Get all 0 and initialise them as starting points
         for r in range(row):
             for c in range(col):
                 if mat[r][c] == 0:
                     out[r][c] = 0
                     q.append((r, c))
         
+        # Solve for all distance 0, then 1, 2...
+        # Hence, each new unsolved neighbour will be 1 unit further away from a 0
         while q:
             r, c = q.popleft()
             
