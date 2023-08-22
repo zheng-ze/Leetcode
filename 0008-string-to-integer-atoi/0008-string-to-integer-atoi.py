@@ -8,11 +8,8 @@ class Solution:
         i = 0
         while i + 1 < len(s) and s[i] == ' ':
             i += 1
-            
-        if not re.search("^(\\d|\-|\+)+$", s[i]):
-            return 0
         
-        if not s[i].isnumeric():
+        if s[i] == '+' or s[i] == '-':
             i += 1
         
         j = i
