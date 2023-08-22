@@ -5,7 +5,7 @@ class Solution:
         if len(s) == 0:
             return 0
         
-        # Remove all whitespaces
+        # Remove all whitespaces at front
         i = 0
         while i + 1 < len(s) and s[i] == ' ':
             i += 1
