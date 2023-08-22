@@ -5,6 +5,7 @@ class Solution:
         if len(s) == 0:
             return 0
         
+        # Remove all whitespaces
         i = 0
         while i + 1 < len(s) and s[i] == ' ':
             i += 1
@@ -19,8 +20,9 @@ class Solution:
         j = i
         while j < len(s) and s[j].isnumeric():
             j += 1
-            
-        if (j == i):
+        
+        # No numeric numbers after spaces
+        if (j == i): 
             return 0
             
         num = int(s[i : j]) * sign
