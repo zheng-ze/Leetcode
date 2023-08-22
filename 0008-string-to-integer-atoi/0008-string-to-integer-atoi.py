@@ -9,8 +9,12 @@ class Solution:
         while i + 1 < len(s) and s[i] == ' ':
             i += 1
         
-        if s[i] == '+' or s[i] == '-':
+        sign = 1
+        if s[i] == '+':
             i += 1
+        elif s[i] == '-':
+            i += 1
+            sign = -1
         
         j = i
         while j < len(s) and s[j].isnumeric():
@@ -19,13 +23,15 @@ class Solution:
         if (j == i):
             return 0
             
-        num = int(s[i : j])
-        print(num)
+        num = int(s[i : j]) * sign
         
-        if s[max(0, i - 1)] == '-':
-            return -num if -num > (1 << 31) * -1 else (1 << 31) * -1
-        else:
-            return num if num < (1 << 31) - 1 else (1 << 31) - 1
+        int_min = (1 << 31) * -1
+        int_max = (1 << 31) - 1
+        if num < int_min:
+            return int_min
+        if num > int_max:
+            return int_max
+        return num
         
         
         
