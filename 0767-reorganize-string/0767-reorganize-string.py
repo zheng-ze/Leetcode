@@ -9,8 +9,7 @@ class Solution:
         heapq.heapify(pq)
         
         prev_val, prev_c = 0, ""
-        out = [0 for i in range(len(s))]
-        idx = 0
+        out = []
         
         while pq:
             if (prev_val < 0):
@@ -18,8 +17,7 @@ class Solution:
             else:
                 val, c = heapq.heappop(pq)
             
-            out[idx] = c
-            idx += 1
+            out.append(c)
             prev_val = val + 1
             prev_c = c
                 
