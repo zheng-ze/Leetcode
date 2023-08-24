@@ -8,11 +8,8 @@ class Solution:
         length = len(words[0])
         i = 1
         while i < len(words):
-            print("1", i)
             # Greedy filling of lines. Make sure that there is at least space between each word
             while i < len(words) and length + len(words[i]) < maxWidth:
-                # print("2", i)
-                # print(curr)
                 curr.append(words[i])
                 length += (1 + len(words[i]))
                 i += 1
