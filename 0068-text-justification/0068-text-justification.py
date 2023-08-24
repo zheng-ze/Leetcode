@@ -13,16 +13,18 @@ class Solution:
                 curr.append(words[i])
                 length += (1 + len(words[i]))
                 i += 1
-                        
+            
+            numExtraSpaces = maxWidth - length
+            
             if len(curr) == 1:
-                output.append(curr[0] + " " * (maxWidth - length))
+                output.append(curr[0] + " " * numExtraSpaces)
             else:
                 if i == len(words):
-                    output.append(" ".join(curr) + " " * (maxWidth - length))
+                    output.append(" ".join(curr) + " " * numExtraSpaces)
                     return output
                 spaces = [1] * (len(curr) - 1)
                 
-                for j in range(maxWidth - length):
+                for j in range(numExtraSpaces):
                     idx = j % len(spaces)
                     spaces[idx] += 1
                 
