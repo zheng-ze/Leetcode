@@ -9,7 +9,7 @@ class Solution:
         i = 1
         
         # Each iteration of outer loop will resolve for 1 sentence
-        while i < len(words):
+        while i <= len(words):
             # Greedy filling of lines. Make sure that there is at least space between each word
             while i < len(words) and length + len(words[i]) < maxWidth:
                 curr.append(words[i])
@@ -39,16 +39,12 @@ class Solution:
                 for j in range(len(spaces)):
                     sentence += " " * spaces[j] + curr[j + 1] 
                 output.append(sentence)
-                
-                
-            if (i < len(words) - 1):
-                curr = [words[i]]
-                length = len(words[i])
-                i += 1
             
-            # Next line is a one word
-            elif i == len(words) - 1:
-                output.append(words[i] + " " * (maxWidth - len(words[i])))
+            if i == len(words):
                 return output
+            
+            curr = [words[i]]
+            length = len(words[i])
+            i += 1
         
         return output
