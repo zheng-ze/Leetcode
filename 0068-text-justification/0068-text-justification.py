@@ -7,6 +7,8 @@ class Solution:
         curr = [words[0]]
         length = len(words[0])
         i = 1
+        
+        # Each iteration of outer loop will resolve for 1 sentence
         while i < len(words):
             # Greedy filling of lines. Make sure that there is at least space between each word
             while i < len(words) and length + len(words[i]) < maxWidth:
@@ -19,9 +21,14 @@ class Solution:
             if len(curr) == 1:
                 output.append(curr[0] + " " * numExtraSpaces)
             else:
+                # No more words -> This is final line so left justify
                 if i == len(words):
                     output.append(" ".join(curr) + " " * numExtraSpaces)
                     return output
+                
+                # Full justify
+                
+                #Spaces are split evenly but filled from left first
                 spaces = [1] * (len(curr) - 1)
                 
                 for j in range(numExtraSpaces):
@@ -32,10 +39,14 @@ class Solution:
                 for j in range(len(spaces)):
                     sentence += " " * spaces[j] + curr[j + 1] 
                 output.append(sentence)
+                
+                
             if (i < len(words) - 1):
                 curr = [words[i]]
                 length = len(words[i])
                 i += 1
+            
+            # Next line is a one word
             elif i == len(words) - 1:
                 output.append(words[i] + " " * (maxWidth - len(words[i])))
                 return output
