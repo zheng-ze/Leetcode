@@ -17,14 +17,12 @@ class MyStack:
         for i in range(len(self.queue) - 1):
             self.queue.append(self.queue.popleft())
         
-        
     def pop(self) -> int:
         return self.queue.popleft() # poll
 
     def top(self) -> int:
         return self.queue[0] # peek
         
-
     def empty(self) -> bool:
         return len(self.queue) == 0 
         
