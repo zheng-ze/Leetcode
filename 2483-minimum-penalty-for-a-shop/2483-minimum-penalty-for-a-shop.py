@@ -21,10 +21,11 @@ class Solution:
             penalty += customers[hour] == 'Y'
         closedPenalty[0] = penalty
         
-        penalty, idx = float('inf'), -1
+        lowest, idx = float('inf'), -1
         for hour in range(len(openPenalty)):
-            if openPenalty[hour] + closedPenalty[hour] < penalty:
-                penalty = openPenalty[hour] + closedPenalty[hour]
+            penalty = openPenalty[hour] + closedPenalty[hour]
+            if penalty < lowest:
+                lowest = penalty
                 idx = hour
         return idx
             
