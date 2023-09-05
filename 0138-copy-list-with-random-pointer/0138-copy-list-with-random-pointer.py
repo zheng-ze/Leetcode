@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 """
 # Definition for a Node.
 class Node:
@@ -11,8 +9,8 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if not head or head.next:
-            return deepcopy(head)
+        if not head:
+            return None
         
         current = head
         
