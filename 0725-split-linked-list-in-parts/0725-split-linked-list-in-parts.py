@@ -22,6 +22,8 @@ class Solution:
         for i in range(k):
             out.append(curr)
             last = None
+            
+            # Break the list after the part is full
             for j in range(numEachPart + (1 if remainder > 0 else 0)):
                 last = curr
                 curr = curr.next
