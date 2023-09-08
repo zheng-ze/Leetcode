@@ -12,7 +12,8 @@ class Solution:
         
         # Compute current row based on previous row
         self.dp.append([1])
-
+        
+        # Compute middle
         for i in range(1, numRows - 1):
             self.dp[numRows - 1].append(sum(self.dp[numRows - 2][i - 1: i +1]))
         
