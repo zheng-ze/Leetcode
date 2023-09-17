@@ -10,17 +10,17 @@ class Solution:
         q = []
         heapq.heapify(q)
         heapq.heappush(q, (0, (0, 0)))
-        visited = set()
+        visited = [[False for c in range(cols)] for r in range(rows)]
         
         dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))
         
         while q:
             (effort, (currX, currY)) = heapq.heappop(q)
             
-            if (currX, currY) in visited:
+            if visited[currX][currY]:
                 continue
                 
-            visited.add((currX, currY))
+            visited[currX][currY] = True
             
             if currX == rows - 1 and currY == cols - 1:
                 return effort
@@ -28,7 +28,7 @@ class Solution:
             for d in dirs:
                 newX = currX + d[0]
                 newY = currY + d[1]
-                if newX >= rows or newX < 0 or newY >= cols or newY < 0 or (newX, newY) in visited:
+                if newX >= rows or newX < 0 or newY >= cols or newY < 0 or visited[newX][newY]:
                     continue
                     
                 newEffort = max(effort, abs(heights[currX][currY] - heights[newX][newY]))
