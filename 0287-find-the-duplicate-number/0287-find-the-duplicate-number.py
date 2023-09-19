@@ -4,8 +4,9 @@ class Solution:
         hi = len(nums) - 1
         
         while lo < hi:
-            mid = lo + (hi - lo) // 2
-            count = sum(1 for _ in filter(lambda num: num <= mid, nums))
+            mid = lo + (hi - lo) // 2            
+            count = sum(1 if num <= mid else 0 for num in nums)
+                
             
             if count > mid:
                 hi = mid
