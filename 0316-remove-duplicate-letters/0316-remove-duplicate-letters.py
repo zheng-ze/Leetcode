@@ -1,10 +1,11 @@
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
-        indices = dict()
+        indices = {}
         stack = []
         length = len(s)
         used = set()
         
+        # Get indices of last occurrence of elements
         for i in range(length):
             indices[s[i]] = i
                     
