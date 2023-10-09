@@ -5,9 +5,6 @@ class Solution:
         if not length:
             return [-1, -1]
         
-        if length == 1:
-            return [-1, -1] if nums[0] != target else [0, 0]
-        
         lo = 0
         hi = length - 1
         found = False
