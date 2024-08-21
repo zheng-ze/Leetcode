@@ -8,6 +8,6 @@ class Solution:
             currSmall, currBig = arr[0], arr[-1]
             maxDiff = max(maxDiff, currBig - smallest, largest - currSmall)
             smallest = min(smallest, currSmall)
-            largest = max(largest, currBig)
+            largest = max(largest, currBig) 
         
         return maxDiff
