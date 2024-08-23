@@ -35,5 +35,5 @@ class Solution:
         numerator //= gcd
         denominator //= gcd
         
-        return f"{numerator}/{denominator}"
+        return f"{numerator}/{denominator}" 
                 
