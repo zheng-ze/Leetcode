@@ -9,7 +9,7 @@ class Solution:
                 stack.append(']')
             elif c == '{':
                 stack.append('}')
-            elif len(stack) == 0 or stack.pop(-1) != c:
+            elif not stack or stack.pop(-1) != c:
                 return False
         
-        return len(stack) == 0
+        return not stack
