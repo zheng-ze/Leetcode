@@ -11,6 +11,6 @@ class Solution:
             if not stack or stack[-1] != dic[c]:
                 return False
             
-            stack.pop(-1)
+            stack.pop(-1) 
         
         return not stack
