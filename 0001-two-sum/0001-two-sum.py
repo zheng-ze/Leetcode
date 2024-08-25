@@ -1,9 +1,13 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        length = len(nums)
+        mem = {}
         
-        for i in range(length - 1):
-            for j in range(i + 1, length):
-                if nums[i] + nums[j] == target:
-                    return [i, j]
+        for i in range(len(nums)):
+            num = nums[i]
+            complement = target - num
+            
+            if complement in mem:
+                return [i, mem[complement]]
+            
+            mem[num] = i
         return [0, 0]
