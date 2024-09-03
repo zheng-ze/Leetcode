@@ -11,7 +11,7 @@ class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         if not node:
             return node
-        q = []
+        q = deque([])
         nodes = {}
         
         newNode = Node(node.val, [])
@@ -21,7 +21,7 @@ class Solution:
         visited = set()
         
         while q:
-            node = q.pop()
+            node = q.popleft()
             
             if not node or node.val in visited:
                 continue
