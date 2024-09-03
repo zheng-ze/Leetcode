@@ -5,26 +5,26 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        def evaluate(node: Optional[TreeNode]) -> List[List[int]]:
+        self.mem = []
+        self.length = 0
+        def evaluate(node: Optional[TreeNode], level: int = 0):
             if not node:
-                return []
-            left, right = evaluate(node.left), evaluate(node.right)
-            lenLeft, lenRight = len(left), len(right)
+                return
             
-            out = [[] for i in range(max(lenLeft, lenRight) + 1)]
+            if self.length <= level:
+                self.mem.append([])
+                self.length += 1
             
-            for i in range(max(lenLeft, lenRight)):
-                if i < lenLeft:
-                    out[i + 1].extend(left[i])
-                if i < lenRight:
-                    out[i + 1].extend(right[i])
-            out[0].append(node.val)
+            self.mem[level].append(node.val)
             
-            return out
+            evaluate(node.left, level + 1)
+            evaluate(node.right, level + 1)
         
-        return evaluate(root)
+        evaluate(root)
+        return self.mem
             
             
