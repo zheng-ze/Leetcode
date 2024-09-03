@@ -8,19 +8,26 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        def evaluate(mem: List[List[int]], node: Optional[TreeNode], level: int = 0):
-            if not node:
-                return
-            
-            while len(mem) <= level:
-                mem.append([])
-            
-            mem[level].append(node.val)
-            
-            evaluate(mem, node.left, level + 1)
-            evaluate(mem, node.right, level + 1)
         out = []
-        evaluate(out, root)
+        q = deque([])
+        q.append((root, 0))
+        
+        while q:
+            node, level = q.popleft()
+            
+            if not node:
+                continue
+            
+            try:
+                out[level].append(node.val)
+            except:
+                out.append([node.val])
+            
+            if node.left:
+                q.append((node.left, level + 1))
+            if node.right:
+                q.append((node.right, level + 1))
+        
         return out
             
             
