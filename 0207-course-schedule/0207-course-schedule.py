@@ -3,21 +3,13 @@ class Solution:
         if numCourses < 2 or not prerequisites:
             return True
         
-        prereqs, prereqFor = {}, {}
-        
-        for i in range(numCourses):
-            prereqs[i] = set()
-            prereqFor[i] = set()
+        numPrereqs, prereqFor = [0 for _ in range(numCourses)], collections.defaultdict(lambda: set())
         
         for (course, prereq) in prerequisites:
-            prereqs[course].add(prereq)
+            numPrereqs[course] += 1
             prereqFor[prereq].add(course)
-        q = deque([])
         
-        for course in prereqs:
-            if prereqs[course]:
-                continue
-            q.append(course)
+        q = deque(i for i, num in enumerate(numPrereqs) if num == 0)
         
         numCompleted = 0
         while q:
@@ -25,9 +17,9 @@ class Solution:
             numCompleted += 1
             
             for c in prereqFor[course]:
-                prereqs[c].remove(course)
+                numPrereqs[c] -= 1
                 
-                if not prereqs[c]:
+                if not numPrereqs[c]:
                     q.append(c)
         return numCompleted == numCourses
                 
