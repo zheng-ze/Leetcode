@@ -14,18 +14,21 @@ class TimeMap:
             return ''
         
         lo, hi = 0, len(values) - 1
-        while lo < hi:
-            mid = lo + (hi - lo + 1) // 2
+        maxValue = ""
+        while lo <= hi:
+            mid = (lo + hi) // 2
             time, value = values[mid]
             
             if timestamp == time:
                 return value
             
-            if time > timestamp:
-                hi = mid - 1
+            if time < timestamp:
+                maxValue = value
+                lo = mid + 1
             else:
-                lo = mid
-        return values[lo][1] if values[lo][0] <= timestamp else ''
+                hi = mid - 1
+                
+        return maxValue
 
 
 # Your TimeMap object will be instantiated and called as such:
