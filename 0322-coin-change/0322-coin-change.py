@@ -1,5 +1,7 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
+        if not coins:
+            return -1
         dp = [float('inf') for i in range(amount + 1)]
         dp[0] = 0
         
