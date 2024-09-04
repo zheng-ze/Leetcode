@@ -2,12 +2,12 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         if target == 1:
             return []
-        d = collections.defaultdict(int)
+        d = set()
         
         for candidate in candidates:
             if candidate > target:
                 continue
-            d[candidate] += 1
+            d.add(candidate)
         
         out = []
         def dfs(target, path, paths, floor):
