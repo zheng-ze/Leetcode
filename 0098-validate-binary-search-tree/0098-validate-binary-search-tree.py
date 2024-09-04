@@ -13,12 +13,6 @@ class Solution:
             if node.val <= floor or node.val >= ceiling:
                 return False
             
-            if not isValid(node.left, floor, node.val):
-                return False
-            
-            if not isValid(node.right, node.val, ceiling):
-                return False
-            
-            return True
+            return isValid(node.left, floor, node.val) and isValid(node.right, node.val, ceiling)
         
         return isValid(root)
