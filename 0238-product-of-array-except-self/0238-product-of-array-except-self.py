@@ -4,7 +4,7 @@ class Solution:
             return
         
         length = len(nums)
-        out = [1 for i in range(length)]
+        out = [1] * length
         
         for i in range(1, length):
             out[i] = out[i - 1] * nums[i - 1]
