@@ -27,6 +27,7 @@ class Solution:
             
             if nums[mid] == target:
                 return mid
+            
             if nums[mid] < target:
                 lo = mid + 1
             else:
