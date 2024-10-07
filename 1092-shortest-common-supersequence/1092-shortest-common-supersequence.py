@@ -16,7 +16,7 @@ class Solution:
                     length, subsequence = dp[i - 1][j - 1]
                     dp[i][j] = (length + 1, subsequence + x[i - 1])
                 else:
-                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j], key=lambda x: x[0])
+                    dp[i][j] = dp[i][j - 1] if dp[i][j - 1] >= dp[i - 1][j] else dp[i - 1][j]
 
         # No LCS -> No way to reduce length -> just combine
         length, LCS = dp[len1][len2]
