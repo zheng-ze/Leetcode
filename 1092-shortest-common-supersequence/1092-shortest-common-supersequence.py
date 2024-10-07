@@ -8,24 +8,24 @@ class Solution:
             return x
 
         # Find LCS first -> LCS will allow us to remove letters thereby shortening the string
-        dp = [[(0, "") for _ in range(len2 + 1)] for _ in range(len1 + 1)]
+        dp = [["" for _ in range(len2 + 1)] for _ in range(len1 + 1)]
 
         for i in range(1, len1 + 1):
             for j in range(1, len2 + 1):
                 if x[i - 1] == y[j - 1]:
-                    length, subsequence = dp[i - 1][j - 1]
-                    dp[i][j] = (length + 1, subsequence + x[i - 1])
+                    subsequence = dp[i - 1][j - 1]
+                    dp[i][j] = subsequence + x[i - 1]
                 else:
-                    dp[i][j] = dp[i][j - 1] if dp[i][j - 1] >= dp[i - 1][j] else dp[i - 1][j]
+                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j], key=len)
 
         # No LCS -> No way to reduce length -> just combine
-        length, LCS = dp[len1][len2]
-        if length == 0:
+        LCS = dp[len1][len2]
+        if not LCS:
             return x + y
 
         # Same word
-        if length == len1 == len2:
-            return (x)
+        if len(LCS) == len1 == len2:
+            return x
         
         out = ""
         i = j = 0
