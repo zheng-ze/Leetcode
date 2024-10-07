@@ -9,10 +9,6 @@ class Solution:
 
         # Find LCS first -> LCS will allow us to remove letters thereby shortening the string
         dp = [[(0, "") for _ in range(len2 + 1)] for _ in range(len1 + 1)]
-        for i in range(len1 + 1):
-            dp[i][0] = (0, "")
-        for j in range(len2 + 1):
-            dp[0][j] = (0, "")
 
         for i in range(1, len1 + 1):
             for j in range(1, len2 + 1):
