@@ -30,39 +30,19 @@ class Solution:
         # Same word
         if length == len1 == len2:
             return (x)
-
-        # Use LCS to break strings into chunks.
-        # Combine chunks to from Shortest Super Sequence
-        chunks1 = ["" for _ in range(length + 1)]
-        chunks2 = ["" for _ in range(length + 1)]
-
-        i = length - 1
-        j = k = len1 - 1
-        while i >= 0 and j >= 0:
-            while j >= 0 and x[j] != LCS[i]:
-                j -= 1
-            chunks1[i + 1] = x[j + 1: k + 1]
-            j -= 1
-            i -= 1
-            k = j
-
-        chunks1[0] = x[:k + 1]
-
-        i = length - 1
-        j = k = len2 - 1
-        while i >= 0 and j >= 0:
-            while j >= 0 and y[j] != LCS[i]:
-                j -= 1
-            chunks2[i + 1] = y[j + 1: k + 1]
-            j -= 1
-            i -= 1
-            k = j
-        chunks2[0] = y[:k + 1]
-
-        combined = list(map(lambda x: x[0] + x[1], zip(chunks1, chunks2)))
+        
         out = ""
-        for i in range(length):
-            out += combined[i] + LCS[i]
-        out += combined[-1]
-
-        return out
+        i = j = 0
+        for c in LCS:
+            while i < len1 and x[i] != c:
+                out += x[i]
+                i += 1
+            while j < len2 and y[j] != c:
+                out += y[j]
+                j += 1
+            
+            out += c
+            i += 1
+            j += 1
+        
+        return out + x[i:] + y[j:]
